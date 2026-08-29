@@ -1,0 +1,13 @@
+apiVersion : v1
+kind: pod
+metadata:
+  name: web-server-pod
+  lables:
+    app: web
+    environment: production
+spec:
+  containers:
+  - name: nginx-container
+    image:  nginx:1.25
+    ports:
+    - containerPort: 80
