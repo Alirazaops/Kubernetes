@@ -16,4 +16,4 @@ spec:
         - name: nginx-container
           image: nginx:latest
           ports:
-            -container: 80
+            - container: 80
