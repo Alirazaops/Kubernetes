@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: ReplicaSet
-Metadata:
+metadata:
   name: nginx-replicaset
 spec:
   replicas: 3
@@ -9,7 +9,7 @@ spec:
       app:  nginx
   template:
     metadata:
-      lables:
+      labels:
         app:  nginx
     spec:
       containers:
