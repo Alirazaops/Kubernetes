@@ -1,23 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadat:
-  name: myapp-argo-Application
+metadata:
+  name: myapp-argo-application
   namespace:  argocd
 spec:
   project: default
 
-source:
-  repoURL:  https://github.com/Alirazaops/Kubernetes.git
-  targetRevision: main
-  path: Services-ClusterIP-NodePort-LoadBalancer
-destination:
-  server: https://kubernetes.default.svc
-  namespace:  myapp
-  
-syncPolicy:
-  syncOptions:
-  - CreateNamespace=true
+  source:
+    repoURL:  https://github.com/Alirazaops/Kubernetes.git
+    targetRevision: main
+    path: Services-ClusterIP-NodePort-LoadBalancer
+  destination:
+    server: https://kubernetes.default.svc
+    namespace:  myapp
 
-  automated:
-    selfHeal: true
-    prune:  true
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune:  true
