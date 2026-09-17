@@ -1,0 +1,47 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: nginx-Deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  nginx
+  template: 
+    metadata:
+      labels:
+        app:  nginx
+    spec:
+      containers:
+      - name: nginx
+        image:  nginx:latest
+        ports:
+        - containerPort:  80
+
+        # Liveness Probe: check if container is still running
+
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          intialDelaySeconds: 10
+          periodSeconds:  10
+          failureThreshold: 3
+
+        # Readiness Probe: check if container is ready to serve traffic
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          intialDelaySeconds: 5
+          periodSeconds:  5
+          failureThreshold: 3
+
+        #Startup Probes: USed for slow-starting containers (Optional for NGINX)
+
+        startupProbe:
+          httpGet:
+            path: /
+            port: 80
+            periodSeconds:  5
+            failureThreshold: 3
