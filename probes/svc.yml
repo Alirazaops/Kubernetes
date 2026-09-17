@@ -1,0 +1,14 @@
+# probes services
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: ClusterIP
+  port:
+    - portocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app:  nginx
+  
